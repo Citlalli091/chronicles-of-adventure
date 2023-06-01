@@ -22,7 +22,6 @@ const Login = () => {
    console.log('Login form submitted:', loginForm);
  };
 
-
  return (
    <div>
      <h2>Login</h2>
