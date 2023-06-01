@@ -1,10 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NavBar from './';
-import WelcomeMessage from '';
-
-import LoginPage from './LoginPage';
-import MainPage from './final-project/src/components/MainPage';
+import NavBar from './components';
+import WelcomeMessage from './components';
+import MainPage from './MainPage';
 
 function App() {
   return (
@@ -12,8 +10,11 @@ function App() {
       <div className="App">
         <NavBar />
         <Switch>
-          <Route path="/mainpage">
-            <MainPage />
+          <Route path="/signup">
+            <SignUpPage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
           </Route>
           <Route path="/">
             <WelcomeMessage />
