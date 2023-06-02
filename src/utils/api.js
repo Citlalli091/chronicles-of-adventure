@@ -21,6 +21,26 @@ const API = {
       }
     })
   },
+  getLoresByWorld:worldId=>{
+    return fetch(`${url}/api/lores/world/${worldId}`)
+    .then(res=>{
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error(`Failed to fetch lores from world ${worldId}`);
+      }
+    })
+  },
+  getLocationsByWorld:worldId=>{
+    return fetch(`${url}/api/locations/world/${worldId}`)
+    .then(res=>{
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error(`Failed to fetch locations from world ${worldId}`);
+      }
+    })
+  },
 };
 
 export default API;
