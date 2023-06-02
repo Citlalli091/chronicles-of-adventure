@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function WorldCard(props) {
+export default function LocationCard(props) {
     return (
         <div>
             <h3 id={props.id}>
@@ -16,14 +16,14 @@ export default function WorldCard(props) {
 //--//  Example for using Component
 
 // import React, { useState, useEffect } from 'react';
-// import WorldCard from "./WorldCard";
+// import LocationCard from "./LocationCard";
 // import API from "./utils/api";
 //
-// const [worlds, setWorlds] = useState([]);
+// const [locs, setLocs] = useState([]);
 //
 // useEffect(() => {
-//   API.getWorldsByType("fantasy").then(data=>{
-//     setWorlds(data);
+//   API.getLocationsByWorld("1").then(data=>{
+//     setLocs(data);
 //   }).catch(err=>{
 //     console.log(err);
 //   })
@@ -31,6 +31,6 @@ export default function WorldCard(props) {
 //
 // return(
 //  <>
-//      {worlds.map(world=><WorldCard key={world.id} id={world.id} name={world.name} description={world.description}/>)}
+//      {locs.map(loc=><LocationCard key={loc.id} id={loc.id} name={loc.name} description={loc.description}/>)}
 //  </>
 // )
