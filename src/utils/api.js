@@ -13,7 +13,7 @@ getUserById:userId=>{
     }
   });
 },
-loginUser:(userOnj)=>{
+loginUser:(userObj)=>{
   return fetch(`${url}/api/users/login`, {
     method: "POST",
     body: JSON.stringify(userObj),
