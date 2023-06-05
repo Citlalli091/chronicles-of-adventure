@@ -1,36 +1,22 @@
-.navbar {
-  background-color: #333;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px;
+.nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  z-index: 2;
 }
 
 .menu-toggle {
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  transform: rotate(0deg);
-  transition: all 0.3s linear;
 }
 
 .bar {
-  width: 100%;
+  width: 25px;
   height: 3px;
   background-color: #fff;
-  transition: background-color 0.3s linear;
+  margin-bottom: 5px;
+  transition: transform 0.3s ease;
 }
 
 .open .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(-45deg) translate(-5px, 6px);
 }
 
 .open .bar:nth-child(2) {
@@ -38,20 +24,27 @@
 }
 
 .open .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -8px);
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.nav-menu {
+  display: none;
+}
+
+.open .nav-menu {
+  display: block;
 }
 
 .nav-list {
   list-style-type: none;
-  margin: 0;
   padding: 0;
-  display: flex;
 }
 
 .nav-item {
-  margin-right: 20px;
+  margin-bottom: 10px;
 }
 
+/* Additional styles as needed */
 .nav-item a {
   color: #fff;
   text-decoration: none;
