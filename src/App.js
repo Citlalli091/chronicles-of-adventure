@@ -2,9 +2,6 @@ import React, { useCallback } from 'react';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import Navbar from './components/navbar';
-import WorldSelect from './pages/worldSelect';
-import WorldOptions from './pages/worldOptions';
-import WorldLore from './pages/worldLore';
 
 function App() {
   const particlesInit = useCallback(async (engine) => {
@@ -69,9 +66,6 @@ function App() {
       <Navbar />
         <h1>Welcome!</h1>
         <p>Please sign up or log in to continue.</p>
-        {/* <WorldSelect/> */}
-        {/* <WorldOptions/> */}
-        {/* <WorldLore/> */}
       </div>
     </div>
   );
