@@ -1,7 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import Navbar from './components/navbar';
+import ContentContainer from './components/ContentContainer';
+import API from './utils/api';
 
 function App() {
   const particlesInit = useCallback(async (engine) => {
@@ -10,6 +12,22 @@ function App() {
 
   const particlesLoaded = useCallback(async (container) => {
     console.log(container);
+  }, []);
+
+  const [worlds, setWorlds] = useState([]);
+
+  // Simulating fetching user-created worlds
+  useEffect(() => {
+    // Make an API call or fetch data from the server
+    const fetchWorldsType = (type) => {
+      API.getWorldsByType(type)
+      .then(data=>{
+          setWorlds(data);
+      }).catch(err=>{
+      console.log(err);
+      })
+    }
+    fetchWorldsType("fantasy");
   }, []);
 
   return (
@@ -63,9 +81,8 @@ function App() {
         }}
       />
       <div style={{ zIndex: 1, color: '#ffffff' }}>
-      <Navbar />
-        <h1>Welcome!</h1>
-        <p>Please sign up or log in to continue.</p>
+        <Navbar />
+        <ContentContainer worlds={worlds} />
       </div>
     </div>
   );

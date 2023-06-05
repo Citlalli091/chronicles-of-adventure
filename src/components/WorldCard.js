@@ -3,9 +3,12 @@ import React from "react";
 export default function WorldCard(props) {
     return (
         <div>
-            <h3 id={props.id}>
+            <button
+            onClick={()=>props.selectWorld(props.id)}
+            id={props.id}
+            className="worldSelectBtn">
                 {props.name}
-            </h3>
+            </button>
             <p>
                 {props.description}
             </p>
