@@ -80,7 +80,7 @@ function App() {
           },
         }}
       />
-      <div style={{ zIndex: 1, color: '#ffffff' }}>
+      <div style={{ zIndex: 1, color: '#ffffff', marginTop: '2rem' }}>
         <Navbar />
         <ContentContainer worlds={worlds} />
       </div>
