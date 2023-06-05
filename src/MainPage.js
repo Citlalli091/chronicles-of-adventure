@@ -3,6 +3,7 @@ import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import Navbar from './components/navbar';
 import ContentContainer from './components/ContentContainer';
+import API from './utils/api';
 
 function App() {
   const particlesInit = useCallback(async (engine) => {
@@ -18,17 +19,15 @@ function App() {
   // Simulating fetching user-created worlds
   useEffect(() => {
     // Make an API call or fetch data from the server
-    const fetchWorlds = async () => {
-      try {
-        const response = await fetch('https://api.example.com/user/worlds');
-        const data = await response.json();
-        setWorlds(data);
-      } catch (error) {
-        console.error('Error fetching user worlds:', error);
-      }
-    };
-
-    fetchWorlds();
+    const fetchWorldsType = (type) => {
+      API.getWorldsByType(type)
+      .then(data=>{
+          setWorlds(data);
+      }).catch(err=>{
+      console.log(err);
+      })
+    }
+    fetchWorldsType("fantasy");
   }, []);
 
   return (

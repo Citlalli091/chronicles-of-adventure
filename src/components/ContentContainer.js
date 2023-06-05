@@ -25,9 +25,8 @@ const ContentContainer = ({ worlds, handleMenuClick }) => {
               <li key={world.id}>
                 <h3>{world.name}</h3>
                 <p>{world.description}</p>
-                <p>Characters: {world.characters.join(', ')}</p>
+                <p>Characters: {world.characters}</p>
                 <p>Lore: {world.lore}</p>
-                <p>Rating: {world.rating}/5</p>
               </li>
             ))}
           </ul>
