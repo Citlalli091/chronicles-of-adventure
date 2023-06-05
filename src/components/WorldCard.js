@@ -1,11 +1,25 @@
 import React from "react";
+import API from "../utils/api";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function WorldCard(props) {
+
+    const selectWorld = (worldId)=>{
+        API.getOneWorld(worldId)
+            .then((data)=>{
+                data.fetchData()
+            })
+    }
+
     return (
         <div>
-            <h3 id={props.id}>
+            <button
+            onClick={()=>selectWorld(props.id)}
+            id={props.id}
+            class="worldSelectBtn">
                 {props.name}
-            </h3>
+            </button>
             <p>
                 {props.description}
             </p>
