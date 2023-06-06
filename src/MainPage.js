@@ -5,6 +5,8 @@ import Navbar from './components/navbar';
 import ContentContainer from './components/ContentContainer';
 import API from './utils/api';
 // import WorldCreate from './components/worldCreate';
+// import LoreCreate from './components/LoreCreate';
+// import CharacterCreate from './components/CharacterCreate';
 
 function App() {
   const particlesInit = useCallback(async (engine) => {
@@ -85,6 +87,8 @@ function App() {
         <Navbar />
         <ContentContainer worlds={worlds} />
         {/* <WorldCreate/> */}
+        {/* <LoreCreate/> */}
+        {/* <CharacterCreate/> */}
       </div>
     </div>
   );
