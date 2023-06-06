@@ -7,7 +7,7 @@ import API from './utils/api';
 // import WorldCreate from './components/worldCreate';
 // import LoreCreate from './components/LoreCreate';
 // import CharacterCreate from './components/CharacterCreate';
-// import AuthForm from './pages/auth';
+import AuthForm from './pages/auth';
 
 function App() {
   const particlesInit = useCallback(async (engine) => {
@@ -25,7 +25,7 @@ function App() {
 
   useEffect(()=>{
     const storedToken = localStorage.getItem("token");
-    API.verifyToken(token).then(data=>{
+    API.verifyToken(storedToken).then(data=>{
       setToken(storedToken);
       setUserId(data.id);
       setUsername(data.username);
@@ -114,7 +114,7 @@ function App() {
         {/* <WorldCreate/> */}
         {/* <LoreCreate/> */}
         {/* <CharacterCreate/> */}
-        {/* <AuthForm usage="Signup" setUserId={setUserId} setUsername={setUsername} setToken={setToken} userId={userId} username={username}/> */}
+        <AuthForm usage="Signup" setUserId={setUserId} setUsername={setUsername} setToken={setToken} userId={userId} username={username}/>
       </div>
     </div>
   );
