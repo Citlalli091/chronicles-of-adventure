@@ -42,7 +42,7 @@ export default function AuthForm(props) {
         username: username,
         password: password,
         //email required until database updated
-        email:"ahatt@ahs.com"
+        email:"waaaa@ahs.com"
       })
         .then((data) => {
           console.log(data);
