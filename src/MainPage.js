@@ -7,6 +7,7 @@ import API from './utils/api';
 // import WorldCreate from './components/worldCreate';
 // import LoreCreate from './components/LoreCreate';
 // import CharacterCreate from './components/CharacterCreate';
+// import AuthForm from './pages/auth';
 
 function App() {
   const particlesInit = useCallback(async (engine) => {
@@ -18,6 +19,30 @@ function App() {
   }, []);
 
   const [worlds, setWorlds] = useState([]);
+  const [userId, setUserId] = useState(-1);
+  const [username, setUsername] = useState("")
+  const [token, setToken] = useState("")
+
+  useEffect(()=>{
+    const storedToken = localStorage.getItem("token");
+    API.verifyToken(token).then(data=>{
+      setToken(storedToken);
+      setUserId(data.id);
+      setUsername(data.username);
+    }).catch(err=>{
+      console.log("oh noes")
+      console.log(err)
+     logout();
+    })
+  },[])
+
+
+  const logout = ()=>{
+    localStorage.removeItem("token")
+      setToken(null);
+      setUsername(null);
+      setUserId(0);
+  }
 
   // Simulating fetching user-created worlds
   useEffect(() => {
@@ -89,6 +114,7 @@ function App() {
         {/* <WorldCreate/> */}
         {/* <LoreCreate/> */}
         {/* <CharacterCreate/> */}
+        {/* <AuthForm usage="Signup" setUserId={setUserId} setUsername={setUsername} setToken={setToken} userId={userId} username={username}/> */}
       </div>
     </div>
   );
