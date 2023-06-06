@@ -3,21 +3,21 @@ import LoreCard from "../components/LoreCard";
 import API from "../utils/api";
 
 function WorldLore(){
-    // const [lores, setLores] = useState([]);
+    const [lores, setLores] = useState([]);
 
-    // useEffect(() => {
-    // API.getLoresByWorld("1").then(data=>{
-    //     setLores(data);
-    // }).catch(err=>{
-    //     console.log(err);
-    // })
-    // }, []);
+    useEffect(() => {
+    API.getLoresByWorld("1").then(data=>{
+        setLores(data);
+    }).catch(err=>{
+        console.log(err);
+    })
+    }, []);
 
-    // return(
-    // <>
-    //     {lores.map(lore=><LoreCard key={lore.id} id={lore.id} name={lore.name} description={lore.description}/>)}
-    // </>
-    // )
+    return(
+    <>
+        {lores.map(lore=><LoreCard key={lore.id} id={lore.id} name={lore.name} description={lore.description}/>)}
+    </>
+    )
 }
 
 export default WorldLore();

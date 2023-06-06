@@ -4,6 +4,7 @@ import { loadFull } from 'tsparticles';
 import Navbar from './components/navbar';
 import ContentContainer from './components/ContentContainer';
 import API from './utils/api';
+// import WorldCreate from './components/worldCreate';
 
 function App() {
   const particlesInit = useCallback(async (engine) => {
@@ -19,15 +20,15 @@ function App() {
   // Simulating fetching user-created worlds
   useEffect(() => {
     // Make an API call or fetch data from the server
-    const fetchWorldsType = (type) => {
-      API.getWorldsByType(type)
+    const fetchWorlds = () => {
+      API.getAllWorlds()
       .then(data=>{
           setWorlds(data);
       }).catch(err=>{
       console.log(err);
       })
     }
-    fetchWorldsType("fantasy");
+    fetchWorlds();
   }, []);
 
   return (
@@ -83,6 +84,7 @@ function App() {
       <div style={{ zIndex: 1, color: '#ffffff' }}>
         <Navbar />
         <ContentContainer worlds={worlds} />
+        {/* <WorldCreate/> */}
       </div>
     </div>
   );

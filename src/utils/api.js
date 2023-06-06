@@ -52,6 +52,16 @@ verifyToken:(token)=>{
 },
 
 //--World-- 
+getAllWorlds:()=>{
+  return fetch(`${url}/api/worlds`)
+  .then(res=>{
+    if (res.ok){
+      return res.json();
+    } else {
+      throw new Error(`Failed to fetch worlds`);
+    }
+  })
+},
 getWorldsByType:worldType=>{
   return fetch(`${url}/api/worlds/type/${worldType}`)
   .then(res=>{
