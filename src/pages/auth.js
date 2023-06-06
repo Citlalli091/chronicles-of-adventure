@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import API from "";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import { useNavigate } from "react-router-dom";
+import API from "../utils/api";
 
 export default function AuthForm(props) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (props.userId > 0) {
-      navigate(`/user/${props.username}`);
+      // navigate(`/user/${props.username}`);
     }
   }, [props.userId]);
   const handleChange = (e) => {
     if (e.target.name === "username") {
       setUsername(e.target.value);
-    } else if (e.target.name === "email") {
-      setEmail(e.target.value);
     } else {
       setPassword(e.target.value);
     }
@@ -26,9 +22,9 @@ export default function AuthForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (props.usage === "Login") {
-      API.login({
+      API.loginUser({
         username: username,
-        password: password,
+        password: password
       })
         .then((data) => {
           console.log(data);
@@ -42,10 +38,11 @@ export default function AuthForm(props) {
           localStorage.removeItem("token");
         });
     } else {
-      API.signup({
-        email: email,
+      API.createUser({
         username: username,
         password: password,
+        //email required until database updated
+        email:"ahatt@ahs.com"
       })
         .then((data) => {
           console.log(data);
@@ -73,12 +70,6 @@ export default function AuthForm(props) {
               onChange={handleChange}
               value={username}
               placeholder="username"
-            />
-             <input
-              name="email"
-              onChange={handleChange}
-              value={email}
-              type="email"
             />
             <input
               name="password"

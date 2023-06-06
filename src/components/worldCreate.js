@@ -13,11 +13,11 @@ export default function WorldCreate() {
                 type:type,
                 description:desc,
                 //TODO: Use the logged in user for this value
-                UserId:"1"
+                // UserId:"1"
             }
         API.createWorld(newWorld)
           .then((data) => {
-            //TODO: Should redirect here
+            //TODO: Should redirect at this point
             console.log(data);
           })
           .catch((err) => {
