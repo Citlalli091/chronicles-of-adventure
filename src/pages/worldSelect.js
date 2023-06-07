@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import WorldCard from "../components/WorldCard";
+import { useNavigate } from "react-router-dom";
 import API from "../utils/api"
-import WorldOptions from './worldOptions';
+import WorldCard from "../components/WorldCard";
 
-function WorldSelect(){
+function WorldSelect(props){
+    const navigate = useNavigate();
     const [worlds, setWorlds] = useState([]);
-    const [selectedWorld, setSelectedWorld] = useState();
 
     const selectWorld = (worldId) =>{
-        setSelectedWorld(worldId);
-        //TODO: Redirect properly
-        return <WorldOptions selectedId={worldId}/>
+        API.getOneWorld(worldId)
+        .then(data=>{
+            props.setWorld(data);
+            navigate('/worldOptions')
+        }).catch(err=>{
+            console.log(err);
+        })
     }
 
     useEffect(() => {
-    //TODO: "fantasy" to be changed to a prop for selection 
-        API.getWorldsByType("fantasy")
+        // if(props.userId < 0){
+        //     navigate(`/`)
+        // }else{
+        API.getWorldsByType(props.worldType)
             .then(data=>{
                 setWorlds(data);
             }).catch(err=>{
             console.log(err);
             })
+        // }
     }, []);
 
     return(
