@@ -3,6 +3,8 @@ import React from 'react';
 function WorldOptions(props){
     function clickAClick(){}
     return(<>
+    <h2>{props.world.name}</h2>
+    <p>{props.world.description}</p>
     <div>
         <button
         onClick={clickAClick()}>

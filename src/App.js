@@ -30,7 +30,8 @@ function App() {
     const [userId, setUserId] = useState(-1);
     const [username, setUsername] = useState("");
     const [token, setToken] = useState("");
-    const [worldType, setWorldType] = useState("");
+    //TODO: remove default value
+    const [worldType, setWorldType] = useState("fantasy");
 
 
     // Token Functions
@@ -41,7 +42,7 @@ function App() {
         setUserId(data.id);
         setUsername(data.username);
         }).catch(err=>{
-        console.log("oh noes")
+        console.log("Token Fail")
         console.log(err)
         logout();
         })
@@ -126,7 +127,18 @@ function App() {
                         userId={userId} 
                         username={username}/>}/>
                     <Route path="/worldselect" element={<WorldSelect
-                        userId={userId}/>}
+                        userId={userId} 
+                        worldType={worldType}
+                        setWorld={setWorld}
+                        world={world}/>}/>
+                    <Route path="/worldoptions" element={<WorldOptions
+                        userId={userId} world={world}/>}/>
+                    {/* <Route path="/worldlore" element={<WorldLore
+                        userId={userId} world={world}/>}/> */}
+                    {/* <Route path="/worldcharacters" element={<WorldCharacters
+                        userId={userId} world={world}/>}/>
+                    <Route path="/worldlocations" element={<WorldLocations
+                        userId={userId} world={world}/>}/> */}
                 </Routes>
             </Router>
         </div>
