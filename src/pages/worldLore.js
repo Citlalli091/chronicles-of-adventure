@@ -2,7 +2,7 @@
 // import LoreCard from "../components/LoreCard";
 // import API from "../utils/api";
 
-// function WorldLore(){
+// export default function WorldLore(){
 //     const [lores, setLores] = useState([]);
 
 //     useEffect(() => {
@@ -19,5 +19,3 @@
 //     </>
 //     )
 // }
-
-// export default WorldLore();

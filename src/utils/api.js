@@ -1,4 +1,5 @@
 const url = "https://coa-back.herokuapp.com";
+// const url = "http://localhost:3001";
 
 const API = {
 
@@ -46,7 +47,7 @@ verifyToken:(token)=>{
       if (res.ok) {
         return res.json();
       } else {
-        throw new Error("Failed to create user");
+        throw new Error("Failed to verify token");
       }
     });
 },
