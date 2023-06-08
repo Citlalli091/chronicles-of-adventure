@@ -5,16 +5,18 @@ import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 
 import Navbar from './components/navbar';
+import Landing from './pages/Landing';
 import AuthForm from './pages/auth';
+import WorldType from './pages/worldType';
 import WorldSelect from './pages/worldSelect';
 import WorldOptions from './pages/worldOptions';
-import Landing from './pages/Landing';
-import WorldType from './pages/worldType';
+import Details from './pages/details';
 import WorldCreate from './pages/worldCreate';
 import LocationCreate from './pages/LocationCreate';
 import LoreCreate from './pages/LoreCreate';
 import CharacterCreate from './pages/CharacterCreate';
-import Details from './pages/details';
+import SideCreate from './pages/SideCreate';
+import UserWorlds from './pages/userWorlds';
 
 function App() {
 
@@ -33,8 +35,7 @@ function App() {
     const [userId, setUserId] = useState(-1);
     const [username, setUsername] = useState("");
     const [token, setToken] = useState("");
-    //TODO: remove default value
-    const [worldType, setWorldType] = useState("fantasy");
+    const [worldType, setWorldType] = useState("");
 
 
     // Token Functions
@@ -112,7 +113,7 @@ function App() {
         {/* Page Content */}
         <div style={{ zIndex: 1, color: '#ffffff', marginTop: '2rem' }}>
             <Router>
-                <Navbar />
+                <Navbar userId={userId}/>
                 <Routes>
                     <Route path="/" element={<Landing 
                     userId={userId}/>}/>
@@ -137,6 +138,11 @@ function App() {
                         worldType={worldType}
                         setWorld={setWorld}
                         world={world}/>}/>
+                    <Route path="/userworlds" element={<UserWorlds
+                        userId={userId} 
+                        setWorld={setWorld}
+                        world={world}/>}
+                        username={username}/>
                     <Route path="/worldoptions" element={<WorldOptions
                         userId={userId} world={world}/>}/>
                     <Route path="/lore" element={<Details
@@ -151,8 +157,25 @@ function App() {
                         usage="Characters"
                         userId={userId} 
                         world={world}/>}/>
-                    <Route path="/createcharacters" element={<CharacterCreate
+                    <Route path="/createworld" element={<WorldCreate
                         userId={userId} 
+                        setWorld={setWorld} 
+                        world={world}/>}/>
+                    <Route path="/createcharacter" element={<CharacterCreate
+                        userId={userId} 
+                        setWorld={setWorld} 
+                        world={world}/>}/>
+                    <Route path="/createsidecharacter" element={<SideCreate
+                        userId={userId} 
+                        setWorld={setWorld} 
+                        world={world}/>}/>
+                    <Route path="/createlore" element={<LoreCreate
+                        userId={userId} 
+                        setWorld={setWorld} 
+                        world={world}/>}/>
+                    <Route path="/createlocation" element={<LocationCreate
+                        userId={userId} 
+                        setWorld={setWorld} 
                         world={world}/>}/>
                 </Routes>
             </Router>

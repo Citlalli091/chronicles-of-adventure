@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
 
-export default function LocationCreate(props) {
+export default function SideCreate(props) {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
 
-    const handleLocationCreate = (e) => {
+    const handleSideCreate = (e) => {
         e.preventDefault();
-            const newLocation = {
+            const newSide = {
                 name:name,
                 description:desc,
                 WorldId:props.world.id
             }
-        API.createLocation(newLocation)
+        API.createSideCharacter(newSide)
         .then(() => {
             navigate("/userworlds");
             }).catch((err) => {
@@ -24,12 +24,12 @@ export default function LocationCreate(props) {
     
     return (
         <div>
-            <h2>Location Creation</h2>
-            <form onSubmit={handleLocationCreate}>
+            <h2>Side-Character Creation</h2>
+            <form onSubmit={handleSideCreate}>
                 <input
                     type="text"
                     name="name"
-                    placeholder="Location Name"
+                    placeholder="Character Name"
                     value={name}
                     onChange={(e)=> setName(e.target.value)}
                 />
@@ -37,7 +37,7 @@ export default function LocationCreate(props) {
                 <input
                     type="text"
                     name="description"
-                    placeholder="Location Description"
+                    placeholder="Character Description"
                     value={desc}
                     onChange={(e)=> setDesc(e.target.value)}
                 />
