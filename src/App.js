@@ -9,6 +9,7 @@ import AuthForm from './pages/auth';
 import WorldSelect from './pages/worldSelect';
 import WorldOptions from './pages/worldOptions';
 import Landing from './pages/Landing';
+import WorldType from './pages/worldType';
 import WorldCreate from './pages/worldCreate';
 import LocationCreate from './pages/LocationCreate';
 import LoreCreate from './pages/LoreCreate';
@@ -134,6 +135,8 @@ function App() {
                         world={world}/>}/>
                     <Route path="/worldoptions" element={<WorldOptions
                         userId={userId} world={world}/>}/>
+                    <Route path="/worldtype" element={<WorldType
+                        userId={userId} worldType={worldType} setWorldType={setWorldType}/>}/>
                     <Route path="/" element={<Landing userId={userId}/>}/>
                     {/* <Route path="/worldlore" element={<WorldLore
                         userId={userId} world={world}/>}/> */}

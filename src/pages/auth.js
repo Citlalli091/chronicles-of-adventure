@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
 
 export default function AuthForm(props) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,7 +32,7 @@ export default function AuthForm(props) {
           props.setUsername(data.user.username);
           props.setToken(data.token);
           localStorage.setItem("token", data.token);
-          // navigate("/");
+          navigate("/");
         })
         .catch((err) => {
           console.log(err);
@@ -49,7 +49,7 @@ export default function AuthForm(props) {
           props.setUsername(data.user.username);
           props.setToken(data.token);
           localStorage.setItem("token", data.token);
-          // navigate("/");
+          navigate("/");
         })
         .catch((err) => {
           console.log(err);
