@@ -14,6 +14,7 @@ import WorldCreate from './pages/worldCreate';
 import LocationCreate from './pages/LocationCreate';
 import LoreCreate from './pages/LoreCreate';
 import CharacterCreate from './pages/CharacterCreate';
+import Details from './pages/details';
 
 import './App.css';
 
