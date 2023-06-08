@@ -11,11 +11,12 @@ import WorldType from './pages/worldType';
 import WorldSelect from './pages/worldSelect';
 import WorldOptions from './pages/worldOptions';
 import Details from './pages/details';
+import UserWorlds from './pages/userWorlds';
+import SideCreate from './pages/SideCreate';
 import WorldCreate from './pages/worldCreate';
 import LocationCreate from './pages/LocationCreate';
 import LoreCreate from './pages/LoreCreate';
 import CharacterCreate from './pages/CharacterCreate';
-import Details from './pages/details';
 import './App.css';
 
 function App() {
