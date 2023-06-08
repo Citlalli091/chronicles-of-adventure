@@ -14,6 +14,7 @@ import WorldCreate from './pages/worldCreate';
 import LocationCreate from './pages/LocationCreate';
 import LoreCreate from './pages/LoreCreate';
 import CharacterCreate from './pages/CharacterCreate';
+import Details from './pages/details';
 
 function App() {
 
@@ -56,7 +57,6 @@ function App() {
         setUsername(null);
         setUserId(0);
     }
-
 
     return (
         // Background Particles
@@ -114,6 +114,8 @@ function App() {
             <Router>
                 <Navbar />
                 <Routes>
+                    <Route path="/" element={<Landing 
+                    userId={userId}/>}/>
                     <Route path="/signup" element={<AuthForm 
                         usage="Signup" 
                         setUserId={setUserId} 
@@ -128,6 +130,8 @@ function App() {
                         setToken={setToken} 
                         userId={userId} 
                         username={username}/>}/>
+                        <Route path="/worldtype" element={<WorldType
+                            userId={userId} worldType={worldType} setWorldType={setWorldType}/>}/>
                     <Route path="/worldselect" element={<WorldSelect
                         userId={userId} 
                         worldType={worldType}
@@ -135,15 +139,21 @@ function App() {
                         world={world}/>}/>
                     <Route path="/worldoptions" element={<WorldOptions
                         userId={userId} world={world}/>}/>
-                    <Route path="/worldtype" element={<WorldType
-                        userId={userId} worldType={worldType} setWorldType={setWorldType}/>}/>
-                    <Route path="/" element={<Landing userId={userId}/>}/>
-                    {/* <Route path="/worldlore" element={<WorldLore
-                        userId={userId} world={world}/>}/> */}
-                    {/* <Route path="/worldcharacters" element={<WorldCharacters
-                        userId={userId} world={world}/>}/>
-                    <Route path="/worldlocations" element={<WorldLocations
-                        userId={userId} world={world}/>}/> */}
+                    <Route path="/lore" element={<Details
+                        usage="Lore"
+                        userId={userId} 
+                        world={world}/>}/>
+                    <Route path="/locations" element={<Details
+                        usage="Locations"
+                        userId={userId} 
+                        world={world}/>}/>
+                    <Route path="/characters" element={<Details
+                        usage="Characters"
+                        userId={userId} 
+                        world={world}/>}/>
+                    <Route path="/createcharacters" element={<CharacterCreate
+                        userId={userId} 
+                        world={world}/>}/>
                 </Routes>
             </Router>
         </div>
