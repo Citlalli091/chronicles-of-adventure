@@ -73,6 +73,16 @@ getWorldsByType:worldType=>{
     }
   })
 },
+getWorldsByUser:userId=>{
+  return fetch(`${url}/api/worlds/user/${userId}`)
+  .then(res=>{
+    if (res.ok){
+      return res.json();
+    } else {
+      throw new Error(`Failed to fetch worlds from user ${userId}`);
+    }
+  })
+},
 getOneWorld:worldId=>{
   return fetch(`${url}/api/worlds/${worldId}`)
   .then(res=>{

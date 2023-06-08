@@ -19,17 +19,22 @@ export default function CharacterCreate(props) {
             WorldId:props.world.id
         }
         API.createCharacter(newCharacter)
-        .then((data) => {
-            console.log(data);
-            API.getOneWorld(props.world.id)
-                }).then(data=>{
-                props.setWorld(data);
-                    }).then(()=>{
-                        navigate("/worldcharacters");
-                        }).catch((err) => {
-                            console.log(err);
-                        });
+        .then(() => {
+            selectWorld(props.world.id);
+            }).catch((err) => {
+                console.log(err);
+            });
     };
+
+    const selectWorld = (worldId) =>{
+        API.getOneWorld(worldId)
+        .then(data=>{
+            props.setWorld(data);
+            navigate('/characters')
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
 
     return (
         <div>

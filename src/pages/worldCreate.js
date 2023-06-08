@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
 
-export default function WorldCreate() {
+export default function WorldCreate(props) {
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [type, setType] = useState("");
     const [desc, setDesc] = useState("");
@@ -12,17 +14,14 @@ export default function WorldCreate() {
                 name:name,
                 type:type,
                 description:desc,
-                //TODO: Use the logged in user for this value
-                // UserId:"1"
+                UserId:props.userId
             }
         API.createWorld(newWorld)
-          .then((data) => {
-            //TODO: Should redirect at this point
-            console.log(data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        .then(() => {
+            navigate("/userworlds");
+            }).catch((err) => {
+                console.log(err);
+            });
     };
     
     return (
@@ -52,7 +51,7 @@ export default function WorldCreate() {
                     id="fantasyRad"
                     onChange={(e)=> setType(e.target.value)}
                 />
-                <label for="fantasyRad">Fantasy</label>
+                <label htmlFor="fantasyRad">Fantasy</label>
                 <input
                     type="radio"
                     name="type"
@@ -60,7 +59,7 @@ export default function WorldCreate() {
                     id="scifiRad"
                     onChange={(e)=> setType(e.target.value)}
                 />
-                <label for="scifiRad">Sci Fi</label>
+                <label htmlFor="scifiRad">Sci Fi</label>
                 <input
                     type="radio"
                     name="type"
@@ -68,7 +67,7 @@ export default function WorldCreate() {
                     id="otherRad"
                     onChange={(e)=> setType(e.target.value)}
                 />
-                <label for="otherRad">Other</label>
+                <label htmlFor="otherRad">Other</label>
                 <br />
                 <button type="submit">Create</button>
             </form>
