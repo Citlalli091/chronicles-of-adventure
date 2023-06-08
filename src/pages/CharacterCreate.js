@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
 
-export default function CharacterCreate() {
+export default function CharacterCreate(props) {
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
     const [char, setChar] = useState("");
@@ -9,22 +11,24 @@ export default function CharacterCreate() {
 
     const handleCharacterCreate = (e) => {
         e.preventDefault();
-            const newCharacter = {
-                name:name,
-                description:desc,
-                characteristics:char,
-                age:age,
-                //TODO: Use selected world for this value
-                // WorldId:"4"
-            }
+        const newCharacter = {
+            name:name,
+            description:desc,
+            characteristics:char,
+            age:age,
+            WorldId:props.world.id
+        }
         API.createCharacter(newCharacter)
-          .then((data) => {
-            //TODO: Should redirect at this point
+        .then((data) => {
             console.log(data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+            API.getOneWorld(props.world.id)
+                }).then(data=>{
+                props.setWorld(data);
+                    }).then(()=>{
+                        navigate("/worldcharacters");
+                        }).catch((err) => {
+                            console.log(err);
+                        });
     };
 
     return (

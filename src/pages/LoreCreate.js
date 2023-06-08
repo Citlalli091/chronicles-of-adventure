@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
 
-export default function LoreCreate() {
+export default function LoreCreate(props) {
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
 
@@ -10,17 +12,19 @@ export default function LoreCreate() {
             const newLore = {
                 name:name,
                 description:desc,
-                //TODO: Use selected world for this value
-                // WorldId:"4"
+                WorldId:props.world.id
             }
         API.createLore(newLore)
-          .then((data) => {
-            //TODO: Should redirect at this point
+        .then((data) => {
             console.log(data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+            API.getOneWorld(props.world.id)
+                }).then(data=>{
+                props.setWorld(data);
+                    }).then(()=>{
+                        navigate("/worldcharacters");
+                        }).catch((err) => {
+                            console.log(err);
+                        });
     };
     
     return (
