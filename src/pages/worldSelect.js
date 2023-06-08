@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import API from "../utils/api"
 import WorldCard from "../components/WorldCard";
 
-function WorldSelect(props){
+export default function WorldSelect(props){
     const navigate = useNavigate();
     const [worlds, setWorlds] = useState([]);
 
@@ -36,5 +36,3 @@ function WorldSelect(props){
     </>
     )
 }
-
-export default WorldSelect;

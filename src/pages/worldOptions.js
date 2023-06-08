@@ -1,6 +1,6 @@
 import React from 'react';
 
-function WorldOptions(props){
+export default function WorldOptions(props){
     function clickAClick(){}
     return(<>
     <h2>{props.world.name}</h2>
@@ -35,6 +35,3 @@ function WorldOptions(props){
     </div>
     </>)
 }
-
-
-export default WorldOptions;

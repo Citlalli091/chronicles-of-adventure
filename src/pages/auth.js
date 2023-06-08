@@ -32,6 +32,7 @@ export default function AuthForm(props) {
           props.setUsername(data.user.username);
           props.setToken(data.token);
           localStorage.setItem("token", data.token);
+          // navigate("/");
         })
         .catch((err) => {
           console.log(err);
@@ -40,9 +41,7 @@ export default function AuthForm(props) {
     } else {
       API.createUser({
         username: username,
-        password: password,
-        //email required until database updated
-        email:"waaaa@ahs.com"
+        password: password
       })
         .then((data) => {
           console.log(data);
@@ -50,6 +49,7 @@ export default function AuthForm(props) {
           props.setUsername(data.user.username);
           props.setToken(data.token);
           localStorage.setItem("token", data.token);
+          // navigate("/");
         })
         .catch((err) => {
           console.log(err);
