@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
+import "./AuthForm.css";
 
 export default function AuthForm(props) {
   const navigate = useNavigate();
