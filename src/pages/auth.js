@@ -49,7 +49,7 @@ export default function AuthForm(props) {
           props.setUserId(data.user.id);
           props.setUsername(data.user.username);
           props.setToken(data.token);
-          localStorage.setItem("token", data.token);
+          localStorage.setItem("token", data.token);            
         })
         .catch((err) => {
           console.log(err);

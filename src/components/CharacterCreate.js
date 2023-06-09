@@ -13,7 +13,7 @@ export default function CharacterCreate() {
                 name:name,
                 description:desc,
                 characteristics:char,
-                age:age,
+                age:age, 
                 //TODO: Use selected world for this value
                 // WorldId:"4"
             }

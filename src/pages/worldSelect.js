@@ -14,7 +14,7 @@ function WorldSelect(){
     }
 
     useEffect(() => {
-    //TODO: "fantasy" to be changed to a prop for selection 
+    //TODO: "fantasy" to be changed to a prop for selection
         API.getWorldsByType("fantasy")
             .then(data=>{
                 setWorlds(data);
