@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -18,10 +19,10 @@ const Navbar = () => {
       {isOpen && (
         <ul className="nav-list">
           <li className="nav-item">
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <a href="#">Create a World</a>
+            {props.userId > 0 ? <Link to="/userworlds">My Worlds</Link>:null}
           </li>
           <li className="nav-item">
             <a href="#">Log Out</a>

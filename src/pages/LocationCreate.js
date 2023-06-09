@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
 
-export default function LocationCreate() {
+export default function LocationCreate(props) {
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
 
@@ -10,17 +12,14 @@ export default function LocationCreate() {
             const newLocation = {
                 name:name,
                 description:desc,
-                //TODO: Use selected world for this value
-                // WorldId:"4"
+                WorldId:props.world.id
             }
         API.createLocation(newLocation)
-          .then((data) => {
-            //TODO: Should redirect at this point
-            console.log(data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        .then(() => {
+            navigate("/userworlds");
+            }).catch((err) => {
+                console.log(err);
+            });
     };
     
     return (

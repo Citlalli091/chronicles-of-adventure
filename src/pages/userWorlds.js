@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import API from "../utils/api"
 import WorldCard from "../components/WorldCard";
 
-export default function WorldSelect(props){
+export default function UserWorlds(props){
     const navigate = useNavigate();
     const [worlds, setWorlds] = useState([]);
 
@@ -18,10 +18,7 @@ export default function WorldSelect(props){
     }
 
     useEffect(() => {
-        // if(props.userId < 0){
-        //     navigate(`/`)
-        // }else{
-        API.getWorldsByType(props.worldType)
+        API.getWorldsByUser(props.userId)
             .then(data=>{
                 setWorlds(data);
             }).catch(err=>{
@@ -32,7 +29,9 @@ export default function WorldSelect(props){
 
     return(
     <>
+        <h1>{props.username} Worlds</h1>
         {worlds.map(world=><WorldCard key={world.id} id={world.id} name={world.name} description={world.description} selectWorld={selectWorld}/>)}
+        <Link to="/createworld">New World</Link>
     </>
     )
 }
