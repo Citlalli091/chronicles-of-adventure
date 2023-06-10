@@ -282,6 +282,41 @@ createAdventure:(adventureObj)=>{
   });
 },
 
+//--AdventureStep--
+getAdventuresStepsByAdventure:advId=>{
+  return fetch(`${url}/api/adventuresteps/adventure/${advId}`)
+  .then(res=>{
+    if (res.ok){
+      return res.json();
+    } else {
+      throw new Error(`Failed to fetch steps from adventure ${advId}`);
+    }
+  })
+},
+getOneAdventureStep:stepId=>{
+  return fetch(`${url}/api/adventuresteps/${stepId}`)
+  .then(res=>{
+    if (res.ok){
+      return res.json();
+    } else {
+      throw new Error(`Failed to fetch step with ID ${stepId}`);
+    }
+  })
+},
+createAdventureStep:(stepObj)=>{
+  return fetch(`${url}/api/adventuresteps`, {
+    method: "POST",
+    body: JSON.stringify(stepObj),
+    headers: {"Content-Type": "application/json",},
+  }).then(res=>{
+    if (res.ok){
+      return res.json();
+    } else {
+      throw new Error("Failed to create adventurestep");
+    }
+  });
+},
+
 };
 
 export default API;
