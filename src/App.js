@@ -196,6 +196,7 @@ function App() {
                         world={world}/>}/>
                     <Route path="/createadventure" element={<AdventureCreate
                         userId={userId} 
+                        setAdventure={setAdventure}
                         setWorld={setWorld} 
                         world={world}/>}/>
                     <Route path="/stepcreation" element={<StepCreation

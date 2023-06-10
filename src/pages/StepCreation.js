@@ -9,47 +9,54 @@ export default function StepCreation(props){
     const [outcome2, setOutcome2] = useState("");
     const [outcome3, setOutcome3] = useState("");
     const [option, setOption] = useState("");
-    const [previous, setPrevious] =useState(-1);
+    const [previous, setPrevious] =useState(0);
 
     const handleFirstStep = (e) => {
-        e.preventDefault();
         const newStep1 = {
             response:response1,
             text:outcome1,
             option:1,
-            isFirstStep:true
+            isFirstStep:true,
+            AdventureId:props.adventure.id
         }
         const newStep2 = {
             response:response2,
             text:outcome2,
             option:2,
-            isFirstStep:true
+            isFirstStep:true,
+            AdventureId:props.adventure.id
         }
         const newStep3 = {
             response:response3,
             text:outcome3,
             option:3,
-            isFirstStep:true
+            isFirstStep:true,
+            AdventureId:props.adventure.id
         }
         API.createAdventureStep(newStep1)
         .then(data=>{
-            if(option===1){
+            if(option==="1"){
                 setPrevious(data.id)
-            }else {
-                API.createAdventureStep(newStep2)
-                .then(data=>{
-                    if(option===2){
-                        setPrevious(data.id)
-                    }else {
-                        API.createAdventureStep(newStep3)
-                        .then(data=>{
-                            if(option===3){
-                                setPrevious(data.id)
-                            }
-                        })
-                    }
-                })
             }
+            setResponse1("");
+            setOutcome1("");
+            setOption("");
+            API.createAdventureStep(newStep2)
+            .then(data=>{
+                if(option==="2"){
+                    setPrevious(data.id)
+                }
+                setResponse2("");
+                setOutcome2("");
+                API.createAdventureStep(newStep3)
+                .then(data=>{
+                    if(option==="3"){
+                        setPrevious(data.id)
+                    }
+                setResponse3("");
+                setOutcome3("");
+                })
+            })
         }).catch(err=>{
             console.log(err);
         })
@@ -57,28 +64,61 @@ export default function StepCreation(props){
 
     const handleStepCreate = (e) => {
         e.preventDefault();
+        if(previous===0){
+            handleFirstStep();
+            return;
+        }
         const newStep1 = {
             response:response1,
             text:outcome1,
             option:1,
             previous:previous,
-            isFirstStep:false
+            isFirstStep:false,
+            AdventureId:props.adventure.id
         }
         const newStep2 = {
             response:response2,
             text:outcome2,
             option:2,
             previous:previous,
-            isFirstStep:false
+            isFirstStep:false,
+            AdventureId:props.adventure.id
         }
         const newStep3 = {
             response:response3,
             text:outcome3,
             option:3,
             previous:previous,
-            isFirstStep:false
+            isFirstStep:false,
+            AdventureId:props.adventure.id
         }
         API.createAdventureStep(newStep1)
+        .then(data=>{
+            if(option==="1"){
+                setPrevious(data.id)
+            }
+            setResponse1("");
+            setOutcome1("");
+            setOption("");
+            API.createAdventureStep(newStep2)
+            .then(data=>{
+                if(option==="2"){
+                    setPrevious(data.id)
+                }
+                setResponse2("");
+                setOutcome2("");
+                API.createAdventureStep(newStep3)
+                .then(data=>{
+                    if(option==="3"){
+                        setPrevious(data.id)
+                    }
+                setResponse3("");
+                setOutcome3("");
+                })
+            })
+        }).catch(err=>{
+            console.log(err);
+        })
     }
 
 
@@ -87,7 +127,7 @@ export default function StepCreation(props){
         <h2>{props.adventure.name} Steps</h2>
         <p>Opening</p>
         <p>{props.adventure.opening}</p>
-        <form onSubmit={handleFirstStep}>
+        <form onSubmit={handleStepCreate}>
             <div>
                 <label htmlFor="Response 1">Response 1</label>
                 <input
