@@ -17,7 +17,8 @@ export default function AdventureCreate(props) {
             WorldId:props.world.id
         }
         API.createAdventure(newAdventure)
-        .then(() => {
+        .then((data) => {
+            props.setAdventure(data);
             selectWorld(props.world.id);
             }).catch((err) => {
                 console.log(err);
