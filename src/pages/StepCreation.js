@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
 
 export default function StepCreation(props){
+
+    const navigate = useNavigate();
+
     const [response1, setResponse1] = useState("");
     const [response2, setResponse2] = useState("");
     const [response3, setResponse3] = useState("");
@@ -9,7 +13,8 @@ export default function StepCreation(props){
     const [outcome2, setOutcome2] = useState("");
     const [outcome3, setOutcome3] = useState("");
     const [option, setOption] = useState("");
-    const [previous, setPrevious] =useState(0);
+    const [previous, setPrevious] = useState(0);
+    const [current, setCurrent] = useState(0);
 
     const handleFirstStep = (e) => {
         const newStep1 = {
@@ -64,6 +69,7 @@ export default function StepCreation(props){
 
     const handleStepCreate = (e) => {
         e.preventDefault();
+        setCurrent(current+1)
         if(previous===0){
             handleFirstStep();
             return;
@@ -114,6 +120,9 @@ export default function StepCreation(props){
                     }
                 setResponse3("");
                 setOutcome3("");
+                if(current>4){
+                    navigate("/adventures")
+                }
                 })
             })
         }).catch(err=>{
