@@ -25,7 +25,7 @@ const Navbar = (props) => {
             {props.userId > 0 ? <Link to="/userworlds">My Worlds</Link>:null}
           </li>
           <li className="nav-item">
-            <a href="#">Log Out</a>
+            {props.userId > 0 ? <Link to="/" onClick={props.logout}>Logout</Link>:null}
           </li>
         </ul>
       )}
