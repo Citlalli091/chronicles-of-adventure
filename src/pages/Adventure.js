@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './Adventure.css'
 
 export default function Adventure(props){
 
@@ -164,35 +165,40 @@ export default function Adventure(props){
         }
     }
 
-    return(
-    <>
-        <div>
+    return (
+        <div className="container">
+          <div>
             <h2>{props.adventure.name}</h2>
             <h6>{props.adventure.description}</h6>
+          </div>
+          <div>
+            {current.previous === "no" ? (
+              <p>{props.adventure.opening}</p>
+            ) : (
+              <p>{current.text}</p>
+            )}
+          </div>
+          <div>
+            {option1.response ? (
+              <button name="Option 1" onClick={handleSelect1}>
+                {option1.response}
+              </button>
+            ) : null}
+          </div>
+          <div>
+            {option2.response ? (
+              <button name="Option 2" onClick={handleSelect2}>
+                {option2.response}
+              </button>
+            ) : null}
+          </div>
+          <div>
+            {option3.response ? (
+              <button name="Option 3" onClick={handleSelect3}>
+                {option3.response}
+              </button>
+            ) : null}
+          </div>
         </div>
-        <div>
-            {current.previous==="no" ? <p>{props.adventure.opening}</p> : <p>{current.text}</p>}
-            
-        </div>
-        <div>
-            {option1.response ? <button
-            name="Option 1"
-            onClick={()=>handleSelect1()}>
-            {option1.response}</button> :null}
-
-        </div>
-        <div>
-            {option2.response ? <button
-            name="Option 2"
-            onClick={()=>handleSelect2()}>
-            {option2.response}</button> :null}
-        </div>
-        <div>
-            {option3.response ? <button
-            name="Option 3"
-            onClick={()=>handleSelect3()}>
-            {option3.response}</button> :null}
-        </div>
-    </>
-    )
-}
+      );
+    }
