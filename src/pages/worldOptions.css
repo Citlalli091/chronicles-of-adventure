@@ -1,57 +1,44 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-    max-width: 600px;
-    padding: 20px;
-  }
-  
-  .title {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .description {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #666;
-  }
-  
-  .card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .card-description {
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: #666;
-  }
-  
-  .link-button {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 16px;
-    margin-right: 10px;
-  }
-  
-  .link-button:hover {
-    background-color: #0056b3;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #d68c38;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.link-container {
+  margin-bottom: 20px;
+}
+
+.link-container > * {
+  margin-bottom: 10px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d68c38;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.new-button {
+  background-color: #6a040f;
+}
+
+.disabled-button {
+  background-color: #6c757d;
+}
