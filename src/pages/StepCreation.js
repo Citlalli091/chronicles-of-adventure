@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
+import './stepCreation.css'
 
 export default function StepCreation(props){
 

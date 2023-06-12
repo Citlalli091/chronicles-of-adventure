@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
+import './worldCreate.css';
 
 export default function WorldCreate(props) {
     const navigate = useNavigate();
@@ -10,22 +11,22 @@ export default function WorldCreate(props) {
 
     const handleWorldCreate = (e) => {
         e.preventDefault();
-            const newWorld = {
-                name:name,
-                type:type,
-                description:desc,
-                UserId:props.userId
-            }
+        const newWorld = {
+            name: name,
+            type: type,
+            description: desc,
+            UserId: props.userId
+        }
         API.createWorld(newWorld)
-        .then(() => {
-            navigate("/userworlds");
+            .then(() => {
+                navigate("/userworlds");
             }).catch((err) => {
                 console.log(err);
             });
     };
-    
+
     return (
-        <div>
+        <div className="container">
             <h2>World Creation</h2>
             <form onSubmit={handleWorldCreate}>
                 <input
@@ -33,7 +34,7 @@ export default function WorldCreate(props) {
                     name="name"
                     placeholder="World Name"
                     value={name}
-                    onChange={(e)=> setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}
                 />
                 <br />
                 <input
@@ -41,7 +42,7 @@ export default function WorldCreate(props) {
                     name="description"
                     placeholder="World Description"
                     value={desc}
-                    onChange={(e)=> setDesc(e.target.value)}
+                    onChange={(e) => setDesc(e.target.value)}
                 />
                 <br />
                 <input
@@ -49,7 +50,7 @@ export default function WorldCreate(props) {
                     name="type"
                     value="fantasy"
                     id="fantasyRad"
-                    onChange={(e)=> setType(e.target.value)}
+                    onChange={(e) => setType(e.target.value)}
                 />
                 <label htmlFor="fantasyRad">Fantasy</label>
                 <input
@@ -57,7 +58,7 @@ export default function WorldCreate(props) {
                     name="type"
                     value="scifi"
                     id="scifiRad"
-                    onChange={(e)=> setType(e.target.value)}
+                    onChange={(e) => setType(e.target.value)}
                 />
                 <label htmlFor="scifiRad">Sci Fi</label>
                 <input
@@ -65,7 +66,7 @@ export default function WorldCreate(props) {
                     name="type"
                     value="other"
                     id="otherRad"
-                    onChange={(e)=> setType(e.target.value)}
+                    onChange={(e) => setType(e.target.value)}
                 />
                 <label htmlFor="otherRad">Other</label>
                 <br />

@@ -1,0 +1,69 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .world-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    background-color: #3b3a3a;
+    border: 1px solid #d68c38;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .world-card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .world-card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .world-card button {
+    padding: 8px 16px;
+    background-color: #d68c38;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .world-card button:hover {
+    background-color: #a86e2c;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 80vh; /* Adjust the height as needed */
+  }
+  
+  
+  
+  .world-card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .world-card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  
+  
+  

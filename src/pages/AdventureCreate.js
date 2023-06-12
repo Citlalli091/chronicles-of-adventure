@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
+import './AdventureCreate';
 
 export default function AdventureCreate(props) {
     const navigate = useNavigate();
