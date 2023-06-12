@@ -17,6 +17,19 @@ export default function UserWorlds(props) {
             });
     }
 
+    const deleteWorld = (worldId => {
+        API.deleteWorld(worldId)
+        .then(data => {
+            console.log(data);
+            API.getWorldsByUser(props.userId)
+            .then(data => {
+                setWorlds(data);
+            }).catch(err => {
+                console.log(err);
+            });
+        })
+    })
+
     useEffect(() => {
         API.getWorldsByUser(props.userId)
             .then(data => {
@@ -35,6 +48,7 @@ export default function UserWorlds(props) {
                         <h2 className="world-name">{world.name}</h2>
                         <p className="world-description">{world.description}</p>
                         <button className="select-button" onClick={() => selectWorld(world.id)}>Select World</button>
+                        <button onClick={() => deleteWorld(world.id)}>Delete World</button>
                     </div>
                 )}
             </div>
