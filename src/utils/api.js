@@ -106,6 +106,17 @@ createWorld:(worldObj)=>{
     }
   });
 },
+deleteWorld:worldId=>{
+  return fetch(`${url}/api/worlds/${worldId}`, {
+    method: "DELETE"
+  }).then(res=>{
+    if (res.ok){
+      return res.json();
+    } else {
+      throw new Error(`Failed to delete world ${worldId}`);
+    }
+  });
+},
 
 //--Lore--
 getLoresByWorld:worldId=>{

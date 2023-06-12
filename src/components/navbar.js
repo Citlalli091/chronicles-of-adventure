@@ -22,6 +22,9 @@ const Navbar = (props) => {
             <Link to="/">Home</Link>
           </li>
           <li className="nav-item">
+            {props.userId > 0 ? <Link to="/worldtype">Genres</Link>:null}
+          </li>
+          <li className="nav-item">
             {props.userId > 0 ? <Link to="/userworlds">My Worlds</Link>:null}
           </li>
           <li className="nav-item">
