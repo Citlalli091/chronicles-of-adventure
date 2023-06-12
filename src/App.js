@@ -121,7 +121,7 @@ function App() {
       <div className="content">
         
       <Router>
-                <Navbar userId={userId}/>
+                <Navbar userId={userId} logout={logout}/>
                 <Routes>
                     <Route path="/" element={<Landing 
                     userId={userId}/>}/>
