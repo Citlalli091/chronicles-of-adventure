@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
-import './stepCreation.css'
 
 export default function StepCreation(props){
 
@@ -99,6 +98,7 @@ export default function StepCreation(props){
             isFirstStep:false,
             AdventureId:props.adventure.id
         }
+        console.log(option)
         API.createAdventureStep(newStep1)
         .then(data=>{
             if(option==="1"){
@@ -158,7 +158,7 @@ export default function StepCreation(props){
                 <label htmlFor="Option 1 Radio">Correct Choice?</label>
                 <input
                     type="radio"
-                    name="Option 1 Radio"
+                    name="option"
                     value="1"
                     id="Option 1 Radio"
                     onChange={(e)=> setOption(e.target.value)}
@@ -184,7 +184,7 @@ export default function StepCreation(props){
                 <label htmlFor="Option 2 Radio">Correct Choice?</label>
                 <input
                     type="radio"
-                    name="Option 2 Radio"
+                    name="option"
                     value="2"
                     id="Option 2 Radio"
                     onChange={(e)=> setOption(e.target.value)}
@@ -210,7 +210,7 @@ export default function StepCreation(props){
                 <label htmlFor="Option 3 Radio">Correct Choice?</label>
                 <input
                     type="radio"
-                    name="Option 3 Radio"
+                    name="option"
                     value="3"
                     id="Option 3 Radio"
                     onChange={(e)=> setOption(e.target.value)}
