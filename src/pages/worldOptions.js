@@ -8,9 +8,9 @@ export default function WorldOptions(props){
         <h1>{props.world.name}</h1>
         <p>{props.world.description}</p>
         <div>
-            {/* <Link to="/adventures">Adventures</Link> */}
-            <h5>Adventures</h5>
+            <Link to="/adventures">Adventures</Link>
             <p>Select an adventure to go on.</p>
+            {props.world.User.id === props.userId ? <Link to="/createadventure">New</Link> :null}
         </div>
         <div>
             <Link to="/lore">Lore</Link>

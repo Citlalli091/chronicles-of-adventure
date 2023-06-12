@@ -16,11 +16,21 @@ export default function LocationCreate(props) {
             }
         API.createLocation(newLocation)
         .then(() => {
-            navigate("/userworlds");
+            selectWorld(props.world.id);
             }).catch((err) => {
                 console.log(err);
             });
     };
+
+    const selectWorld = (worldId) =>{
+        API.getOneWorld(worldId)
+        .then(data=>{
+            props.setWorld(data);
+            navigate('/locations')
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
     
     return (
         <div>

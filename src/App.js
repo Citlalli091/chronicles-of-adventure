@@ -11,12 +11,16 @@ import WorldType from './pages/worldType';
 import WorldSelect from './pages/worldSelect';
 import WorldOptions from './pages/worldOptions';
 import Details from './pages/details';
+import AdventurePage from './pages/AdventurePage';
 import UserWorlds from './pages/userWorlds';
 import SideCreate from './pages/SideCreate';
 import WorldCreate from './pages/worldCreate';
 import LocationCreate from './pages/LocationCreate';
 import LoreCreate from './pages/LoreCreate';
 import CharacterCreate from './pages/CharacterCreate';
+import AdventureCreate from './pages/AdventureCreate';
+import Adventure from './pages/Adventure';
+import StepCreation from './pages/StepCreation';
 import './App.css';
 
 function App() {
@@ -29,13 +33,13 @@ function App() {
     console.log(container);
   }, []);
 
-
     // Global States
     const [world, setWorld] = useState({});
     const [userId, setUserId] = useState(-1);
     const [username, setUsername] = useState("");
     const [token, setToken] = useState("");
     const [worldType, setWorldType] = useState("");
+    const [adventure, setAdventure] = useState({});
 
   // Token Functions
   useEffect(() => {
@@ -161,6 +165,15 @@ function App() {
                         usage="Characters"
                         userId={userId} 
                         world={world}/>}/>
+                    <Route path="/adventures" element={<AdventurePage
+                        adventure={adventure}
+                        setAdventure={setAdventure}
+                        userId={userId} 
+                        world={world}/>}/>
+                    <Route path="/adventure" element={<Adventure
+                        adventure={adventure}
+                        userId={userId} 
+                        world={world}/>}/>
                     <Route path="/createworld" element={<WorldCreate
                         userId={userId} 
                         setWorld={setWorld} 
@@ -180,6 +193,15 @@ function App() {
                     <Route path="/createlocation" element={<LocationCreate
                         userId={userId} 
                         setWorld={setWorld} 
+                        world={world}/>}/>
+                    <Route path="/createadventure" element={<AdventureCreate
+                        userId={userId} 
+                        setAdventure={setAdventure}
+                        setWorld={setWorld} 
+                        world={world}/>}/>
+                    <Route path="/stepcreation" element={<StepCreation
+                        adventure={adventure}
+                        userId={userId} 
                         world={world}/>}/>
                 </Routes>
             </Router>
