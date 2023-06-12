@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AdventureCard from '../components/AdventureCard';
 import API from '../utils/api';
+import './AdventurePage.js';
 
 export default function AdventurePage(props){
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import API from "../utils/api";
+import './stepCreation.css'
 
 export default function StepCreation(props){
     const [response1, setResponse1] = useState("");
